@@ -69,9 +69,9 @@ function SkillCards({
 function About() {
   return (
     <div className="flex flex-col items-center justify-center md:h-screen mt-6 md:mt-0" id="about">
-      <div className="md:w-1/2 mx-auto flex flex-col items-center md:items-start md:flex-row gap-2 mb-20">
+      <div className="md:w-1/2 mx-auto flex flex-col items-center sm:flex-row gap-8 mb-20">
         <div className="flex flex-col items-center mb-8 md:mb-0">
-          <p className="text-5xl flex gap-1 mb-8 md:mb-0">Hello <span className="text-nice-green">!</span> </p>
+          <p className="text-5xl flex gap-1 mb-8">Hello <span className="text-nice-green">!</span> </p>
           <Avatar>
             <AvatarImage src="https://avatars.githubusercontent.com/u/43909833?v=4" alt="profile image of me"/>
             <AvatarFallback>MD</AvatarFallback>
