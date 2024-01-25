@@ -5,7 +5,7 @@ const skills = [
   {
     isFirst: true,
     bottom: "Contact",
-    body: "My Sills",
+    body: "My Skills",
     color: "bg-card-1",
   },
   {
