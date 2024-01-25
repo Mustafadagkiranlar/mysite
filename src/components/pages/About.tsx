@@ -68,9 +68,9 @@ function SkillCards({
 
 function About() {
   return (
-    <div className="flex flex-col items-center justify-center md:h-screen mt-6 md:mt-0" id="about">
-      <div className="md:w-1/2 mx-auto flex flex-col items-center sm:flex-row gap-8 mb-20">
-        <div className="flex flex-col items-center mb-8 md:mb-0">
+    <div className="flex flex-col items-center justify-center sm:h-screen mt-6 sm:mt-0" id="about">
+      <div className="sm:w-1/2 mx-auto flex flex-col items-center sm:flex-row gap-8 mb-20">
+        <div className="flex flex-col items-center mb-8 sm:mb-0">
           <p className="text-5xl flex gap-1 mb-8">Hello <span className="text-nice-green">!</span> </p>
           <Avatar>
             <AvatarImage src="https://avatars.githubusercontent.com/u/43909833?v=4" alt="profile image of me"/>
@@ -78,7 +78,7 @@ function About() {
           </Avatar>
         </div>
         <div>
-          <p className=" text-lg md:text-2xl text-center md:text-start px-6 md:px-0">
+          <p className=" text-lg sm:text-2xl text-center sm:text-start px-4 sm:px-0">
             I am an ambitious software engineer with 4 years of experience in
             software development and project management. I am skilled in
             developing plans, managing projects, creating user documentation,
@@ -90,7 +90,7 @@ function About() {
           </p>
         </div>
       </div>
-      <div className="flex flex-col md:flex-row gap-8 md:gap-0">
+      <div className="flex flex-col sm:flex-row gap-8 sm:gap-0">
         {skills.map((skill, index) => (
           <SkillCards
             key={index}
