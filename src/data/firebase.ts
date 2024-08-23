@@ -15,7 +15,7 @@ const firebaseConfig = {
   storageBucket: process.env.DB_STORAGE_BUCKET,
   messagingSenderId: process.env.DB_MESSAGING_SENDER_ID,
   appId: process.env.DB_APP_ID,
-  measurementId: process.env.DB_MEASUREMENT_ID 
+  measurementId: process.env.DB_MEASUREMENT_ID
 };
 
 // Initialize Firebase
@@ -23,15 +23,32 @@ const app = initializeApp(firebaseConfig);
 // const analytics = getAnalytics(app);
 const db = getFirestore(app);
 
-export async function getBlogs(){
+export async function getBlogs() {
   const querySnapshot = await getDocs(collection(db, "blog"));
   const blogs: { id: string; title: any; body: any; }[] = [];
   querySnapshot.forEach((doc) => {
+    let shortenedBody = doc.data().body.substring(0, 150) + '...';
     blogs.push({
       id: doc.id,
       title: doc.data().title,
-      body: doc.data().body
+      body: shortenedBody
     })
   });
   return blogs;
+}
+
+export async function getBlog(id: string) {
+  
+  const querySnapshot = await getDocs(collection(db, "blog"));
+  let blog: { id: string; title: any; body: any; } = { id: '', title: '', body: '' };
+  querySnapshot.forEach((doc) => {
+    if (doc.id === id) {
+      blog = {
+        id: doc.id,
+        title: doc.data().title,
+        body: doc.data().body
+      }
+    }
+  });
+  return blog;
 }

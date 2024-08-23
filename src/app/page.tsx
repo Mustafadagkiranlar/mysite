@@ -1,6 +1,8 @@
 import Image from "next/image";
 import profilePic from '../../public/profile.jpeg';
-import { getBlogs } from "../../data/firebase";
+import { getBlogs } from "../data/firebase";
+import Link from "next/link";
+import ReadMoreBlogButton from "@/components/ReadMoreBlogButton";
 
 export default async function Home() {
   const blogs = await getBlogs();
@@ -21,7 +23,7 @@ export default async function Home() {
             <h1 className="text-2xl font-semibold">Mustafa Dağkıranlar</h1>
             <p>I am a software engineer and Project Manager in Caretta Robotics in Cyprus.</p>
             <p>In 2024, I graduated from the software engineering program at Eastern Mediterranean University in Cyprus. Currently, I am pursuing a master&apos;s degree in computer engineering with a specialization in artificial intelligence at the same university.</p>
-            <p>Professionaly I am working on robotics, artificial intelligence, machine learning and computer vision. More about what I have done and where I have been is in my <a href="#" className="text-primary">CV</a> </p>
+            <p>Professionaly I am working on robotics, artificial intelligence, machine learning and computer vision. More about what I have done and where I have been is in my <a href="#" className="text-primary">CV</a>.</p>
           </div>
         </div>
         {/* contact */}
@@ -43,7 +45,7 @@ export default async function Home() {
           </div>
           <div className="md:basis-10/12">
             <ul className="space-y-3">
-              <li>Project Manager & Software Developer @ Carett Robotics</li>
+              <li>Project Manager & Software Engineer @ Caretta Robotics</li>
               <li>Kids robotics classes instructor @ Cyprus, Iskele Municipality</li>
               <li>Entrepreneur...</li>
             </ul>
@@ -53,14 +55,17 @@ export default async function Home() {
         {/* Blog */}
         <div className="md:flex md:flex-row px-4 md:gap-4">
           <div className="md:basis-2/12 my-4 md:flex md:justify-end">
-            <p className="font-semibold text-2xl my-4">My Blog</p>
+            <Link href={'/blog'}>
+              <p className="font-semibold text-2xl my-4">My Blogs →</p>
+            </Link>
           </div>
           <div className="md:basis-10/12 md:flex md:flex-col md:justify-center">
             <ul className="space-y-3">
               {blogs.map(async (blog) => (
-                <li key={blog.id.toString()}>
+                <li key={blog.id.toString()} className="md:max-w-[500px]">
                   <p className="font-semibold text-lg">{blog.title}</p>
                   <p>{blog.body}</p>
+                  <ReadMoreBlogButton link={`/blog/${blog.id}`} />
                 </li>
               ))}
             </ul>
